@@ -12,9 +12,9 @@ fileprivate let cellId = "cellId"
 
 class ContactsMainViewController: UITableViewController, UISearchBarDelegate, AddContactControllerDelegate{
     
-    var contactsArr = [Contact]()
+    private var contactsArr = [Contact]()
     
-    var filteredContactsArr = [Contact]()
+    private var filteredContactsArr = [Contact]()
     
     override func viewDidLoad() {
         super.viewDidLoad()

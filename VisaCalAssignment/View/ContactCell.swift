@@ -20,7 +20,7 @@ class ContactCell: UITableViewCell {
         }
     }
     
-    let contactImageView: UIImageView = {
+    private let contactImageView: UIImageView = {
         let iv = UIImageView()
         iv.backgroundColor = .lightGray
         iv.clipsToBounds = true
@@ -28,14 +28,14 @@ class ContactCell: UITableViewCell {
         return iv
     }()
     
-    let emailLabel: UILabel = {
+    private let emailLabel: UILabel = {
         let label = UILabel()
         label.font = UIFont.systemFont(ofSize: 16)
         label.textAlignment = .left
         return label
     }()
     
-    let phoneNumbeLabel: UILabel = {
+    private let phoneNumbeLabel: UILabel = {
         let label = UILabel()
         label.font = UIFont.systemFont(ofSize: 16)
         label.textAlignment = .left

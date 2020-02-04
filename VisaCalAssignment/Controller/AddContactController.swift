@@ -18,7 +18,7 @@ class AddContactController: UIViewController, UIImagePickerControllerDelegate, U
     
     weak var delegate: AddContactControllerDelegate?
     
-    var imagePicker = UIImagePickerController()
+    private var imagePicker = UIImagePickerController()
     
     var contact: Contact? {
         didSet{
@@ -31,7 +31,7 @@ class AddContactController: UIViewController, UIImagePickerControllerDelegate, U
         }
     }
     
-    lazy var emailTextField: UITextField = {
+    private lazy var emailTextField: UITextField = {
         let textField = UITextField()
         textField.placeholder = "email"
         textField.borderStyle = .roundedRect
@@ -40,7 +40,7 @@ class AddContactController: UIViewController, UIImagePickerControllerDelegate, U
         return textField
     }()
     
-    lazy var phoneNumberTextField: UITextField = {
+    private lazy var phoneNumberTextField: UITextField = {
         let textField = UITextField()
         textField.placeholder = "phone number"
         textField.borderStyle = .roundedRect
@@ -49,7 +49,7 @@ class AddContactController: UIViewController, UIImagePickerControllerDelegate, U
         return textField
     }()
     
-    let contactImageView: UIImageView = {
+    private let contactImageView: UIImageView = {
         let iv = UIImageView()
         iv.backgroundColor = .lightGray
         iv.clipsToBounds = true
@@ -57,7 +57,7 @@ class AddContactController: UIViewController, UIImagePickerControllerDelegate, U
         return iv
     }()
     
-    lazy var addImageButton: UIButton = {
+    private lazy var addImageButton: UIButton = {
         let button = UIButton(type: UIButton.ButtonType.system)
         button.addTarget(self, action: #selector(fetchPhotos), for: UIControl.Event.touchUpInside)
         button.setTitle("Add Photo", for: UIControl.State.normal)
@@ -65,7 +65,7 @@ class AddContactController: UIViewController, UIImagePickerControllerDelegate, U
         return button
     }()
     
-    lazy var cancelButton: UIButton = {
+    private lazy var cancelButton: UIButton = {
         let button = UIButton(type: UIButton.ButtonType.system)
         button.addTarget(self, action: #selector(cancelButtonAction), for: UIControl.Event.touchUpInside)
         button.setTitle("Cancel", for: UIControl.State.normal)
@@ -73,7 +73,7 @@ class AddContactController: UIViewController, UIImagePickerControllerDelegate, U
         return button
     }()
     
-    lazy var saveButton: UIButton = {
+    private lazy var saveButton: UIButton = {
         let button = UIButton(type: UIButton.ButtonType.system)
         button.addTarget(self, action: #selector(saveButtonAction), for: UIControl.Event.touchUpInside)
         button.setTitle("Save", for: UIControl.State.normal)
@@ -113,12 +113,12 @@ class AddContactController: UIViewController, UIImagePickerControllerDelegate, U
         
     }
     
-    @objc func cancelButtonAction() {
+    @objc private func cancelButtonAction() {
         dismiss(animated: true, completion: nil)
     }
     
     
-    @objc func saveButtonAction() {
+    @objc private func saveButtonAction() {
         guard let email = emailTextField.text,
             let phoneNumber = phoneNumberTextField.text else {
                 showAlertWithTitle(title: "Missing data", message: "Email and phone are required")
@@ -174,7 +174,7 @@ class AddContactController: UIViewController, UIImagePickerControllerDelegate, U
         return  phone == filtered
     }
     
-    @objc fileprivate func fetchPhotos(){
+    @objc private func fetchPhotos(){
         if UIImagePickerController.isSourceTypeAvailable(.savedPhotosAlbum){
             print("Button capture")
 

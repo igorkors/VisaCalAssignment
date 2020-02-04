@@ -17,14 +17,14 @@ class ContactViewerController: UIViewController, UITextFieldDelegate {
         }
     }
     
-    let emailLabel: UILabel = {
+    private let emailLabel: UILabel = {
         let label = UILabel()
         label.font = UIFont.systemFont(ofSize: 21)
         label.textAlignment = .left
         return label
     }()
     
-    let phoneNumbeLabel: UILabel = {
+    private let phoneNumbeLabel: UILabel = {
         let label = UILabel()
         label.font = UIFont.systemFont(ofSize: 21)
         label.textAlignment = .left
@@ -32,7 +32,7 @@ class ContactViewerController: UIViewController, UITextFieldDelegate {
         return label
     }()
     
-    let emailDescriptionLabel: UILabel = {
+    private let emailDescriptionLabel: UILabel = {
         let label = UILabel()
         label.font = UIFont.boldSystemFont(ofSize: 16)
         label.textAlignment = .left
@@ -40,7 +40,7 @@ class ContactViewerController: UIViewController, UITextFieldDelegate {
         return label
     }()
     
-    let phoneNumbeDescriptionLabel: UILabel = {
+    private let phoneNumbeDescriptionLabel: UILabel = {
         let label = UILabel()
         label.font = UIFont.boldSystemFont(ofSize: 16)
         label.textAlignment = .left
@@ -48,7 +48,7 @@ class ContactViewerController: UIViewController, UITextFieldDelegate {
         return label
     }()
     
-    lazy var cancelButton: UIButton = {
+    private lazy var cancelButton: UIButton = {
         let button = UIButton(type: UIButton.ButtonType.system)
         button.addTarget(self, action: #selector(cancelButtonAction), for: UIControl.Event.touchUpInside)
         button.setTitle("Cancel", for: UIControl.State.normal)
@@ -62,7 +62,7 @@ class ContactViewerController: UIViewController, UITextFieldDelegate {
         initSubviews()
     }
     
-    @objc func cancelButtonAction() {
+    @objc private func cancelButtonAction() {
         dismiss(animated: true, completion: nil)
     }
     

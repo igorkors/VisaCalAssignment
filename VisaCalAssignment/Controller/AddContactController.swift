@@ -8,13 +8,15 @@
 
 import UIKit
 
-protocol AddEditContactViewController: AnyObject {
+fileprivate let paddingTop: CGFloat = 70
+
+protocol AddContactControllerDelegate: AnyObject {
     func contactSavedSuccessfully(contact: Contact)
 }
 
 class AddContactController: UIViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate, UITextFieldDelegate {
     
-    weak var delegate: AddEditContactViewController?
+    weak var delegate: AddContactControllerDelegate?
     
     var imagePicker = UIImagePickerController()
     
@@ -85,16 +87,16 @@ class AddContactController: UIViewController, UIImagePickerControllerDelegate, U
         self.view.backgroundColor = .white
         view.addSubview(contactImageView)
         
-        contactImageView.anchor(top: view.topAnchor, left: nil, bottom: nil, right: nil, paddingTop: 25, paddingLeft: 0, paddingBottom: 0, paddingRight: 0, width: 80, height: 80)
+        contactImageView.anchor(top: view.topAnchor, left: nil, bottom: nil, right: nil, paddingTop: paddingTop, paddingLeft: 0, paddingBottom: 0, paddingRight: 0, width: 80, height: 80)
         contactImageView.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
         contactImageView.layer.cornerRadius = 80 / 2
         
         
         view.addSubview(saveButton)
-        saveButton.anchor(top: view.topAnchor, left: nil, bottom: nil, right: view.trailingAnchor, paddingTop: 25, paddingLeft: 0, paddingBottom: 0, paddingRight: 5, width: 80, height: 40)
+        saveButton.anchor(top: view.topAnchor, left: nil, bottom: nil, right: view.trailingAnchor, paddingTop: paddingTop, paddingLeft: 0, paddingBottom: 0, paddingRight: 5, width: 80, height: 40)
         
         view.addSubview(cancelButton)
-        cancelButton.anchor(top: view.topAnchor, left: view.leadingAnchor, bottom: nil, right: nil, paddingTop: 25, paddingLeft: 0, paddingBottom: 0, paddingRight: 25, width: 80, height: 40)
+        cancelButton.anchor(top: view.topAnchor, left: view.leadingAnchor, bottom: nil, right: nil, paddingTop: paddingTop, paddingLeft: 0, paddingBottom: 0, paddingRight: 25, width: 80, height: 40)
         
         view.addSubview(addImageButton)
         addImageButton.anchor(top: contactImageView.bottomAnchor, left: nil, bottom: nil, right: nil, paddingTop: 16, paddingLeft: 0, paddingBottom: 0, paddingRight: 0, width: 80, height: 40)

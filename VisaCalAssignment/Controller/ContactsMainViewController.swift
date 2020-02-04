@@ -10,7 +10,7 @@ import UIKit
 
 fileprivate let cellId = "cellId"
 
-class ContactsMainViewController: UITableViewController, UISearchBarDelegate, AddEditContactViewController{
+class ContactsMainViewController: UITableViewController, UISearchBarDelegate, AddContactControllerDelegate{
     
     var contactsArr = [Contact]()
     
@@ -40,6 +40,12 @@ class ContactsMainViewController: UITableViewController, UISearchBarDelegate, Ad
             }
             
         }
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        filteredContactsArr = contactsArr
+        tableView.reloadData()
     }
     
     private func initSubviews() {
@@ -100,6 +106,7 @@ class ContactsMainViewController: UITableViewController, UISearchBarDelegate, Ad
     @objc func addContactAction() {
         let vc = AddContactController()
         vc.delegate = self
+        vc.modalPresentationStyle = .fullScreen
         present(vc, animated: true, completion: nil)
     }
     
@@ -107,6 +114,7 @@ class ContactsMainViewController: UITableViewController, UISearchBarDelegate, Ad
         let vc = AddContactController()
         vc.contact = contact
         vc.delegate = self
+        vc.modalPresentationStyle = .fullScreen
         present(vc, animated: true, completion: nil)
     }
     
